@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="halloweenApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        .halloween-button {
+            background-color: #4B0082;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .halloween-button:hover {
+            background-color: #6A2C91;  /* A slightly lighter shade of purple for hover effect */
+        }
+    </style>
+</head>
+
+<body ng-controller="HalloweenController as ctrl" style="background-color: #FF7F00;">
+
+    <h2 style="font-size: 45px;">Halloween Trick or Treat</h2>
+    <h3 style="font-size:30px;">Remember: no risk, no reward!!!</h3>
+
+    <div ng-repeat="student in ctrl.students" style="font-size: 30px;">
+        <span>{{ student.name }}</span>
+        <br>
+        <button style="font-size: 20px;" class="halloween-button" ng-click="ctrl.assignOutcome(student, 'trick')">Trick</button>
+        <button style="font-size: 20px;" class="halloween-button" ng-click="ctrl.assignOutcome(student, 'treat')">Treat</button>
+        <button style="font-size: 20px;" class="halloween-button" ng-click="ctrl.assignOutcome(student, 'absent')">Absent</button>
+        <span ng-if="student.outcome">{{ student.outcome }}</span>
+    </div>
+
+</body>
+
+</html>
